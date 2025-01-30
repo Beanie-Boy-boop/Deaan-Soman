@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toony Timepieces - Checkout</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Toony Timepieces</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="laptops.html">Laptops</a></li>
+            <li><a href="tandc.html">T&C</a></li>
+            <li><a href="help.html">Help</a></li>
+            <li><a href="cart.html">Cart</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="checkout">
+        <h2>Checkout</h2>
+        <div id="checkout-items"></div>
+        <p>Total: $<span id="checkout-total-price">0.00</span></p>
+        <form id="checkout-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="payment">Payment Method:</label>
+                <select id="payment" name="payment" required>
+                    <option value="credit_card">Credit Card</option>
+                    <option value="paypal">PayPal</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Place Order</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Toony Timepieces</p>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="laptops.html">Laptops</a></li>
+            <li><a href="tandc.html">T&C</a></li>
+            <li><a href="help.html">Help</a></li>
+            <li><a href="cart.html">Cart</a></li>
+        </ul>
+    </nav>
+</footer>
+
+<script>
+    function displayCheckout() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let checkoutItems = document.getElementById('checkout-items');
+        let totalPrice = 0;
+
+        cart.forEach(item => {
+            let div = document.createElement('div');
+            div.className = 'checkout-item';
+            div.innerHTML = `<p>${item.name} - $${item.price.toFixed(2)}</p>`;
+            checkoutItems.appendChild(div);
+            totalPrice += item.price;
+        });
+
+        document.getElementById('checkout-total-price').innerText = totalPrice.toFixed(2);
+    }
+
+    document.getElementById('checkout-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        let formData = new FormData(this);
+        let orderData = {};
+        formData.forEach((value, key) => (orderData[key] = value));
+        orderData.totalAmount = document.getElementById('checkout-total-price').innerText;
+
+        fetch('http://localhost:3000/order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderData)
+        })
+        .then(response => response.json())
+        .then(data => alert(data.message))
+        .catch(error => console.error('Error:', error));
+    });
+
+    window.onload = displayCheckout;
+</script>
+
+</body>
+</html>
