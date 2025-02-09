@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toony Technology - Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Toony Technology</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div id="cart-preview">
+        <h3>Cart Preview</h3>
+        <div id="cart-preview-items"></div>
+        <p>Total: $<span id="cart-preview-total">0.00</span></p>
+    </div>
+</header>
+
+<main>
+    <section id="categories">
+        <h2>Explore Featured Categories</h2>
+        <div class="category">
+            <a href="laptops.html"><img src="laptopbag2.jpg" alt="Laptop Bags"><p>Laptop Bags</p></a>
+        </div>
+        <div class="category">
+            <a href="phonecases.html"><img src="phonecase2.webp" alt="Phonecases"><p>Phone Cases</p></a>
+        </div>
+
+    </section>
+
+    <section id="new-arrivals">
+        <h2>New Arrivals</h2>
+        <div class="product-item">
+            <img src="laptopbag.jpg" alt="Laptop bag Image">
+            <h2>Dark Floral Laptop Bag</h2>
+            <p class="description"></p>
+            <p class="price">$40.00</p>
+            <button class="add-to-cart" onclick="addToCart('Dark Floral Bag', 40.00)">Add to Cart</button>
+        
+        </div>
+    
+        <div class="product-item">
+            <img src="phonecase.jpg" alt="Phonecase Image">
+            <h2>Splash art phone case</h2>
+            <p class="description">A dark tone phone case with japanese style splash art</p>
+            <p class="price">$20.00</p>
+            <button class="add-to-cart" onclick="addToCart('Rubber Splash art Phone Case', 20.00)">Add to Cart</button>
+           
+        </div>
+        <div class="product-item">
+            <img src="phonecase2.webp" alt="Phonecase Image">
+            <h2>Hand-painted case (limited stock)</h2>
+            <p class="description">A hand-painted phone case made in collaboration with a local artist.</p>
+            <p class="price">$1200.00</p>
+            <button class="add-to-cart" onclick="addToCart('Handpainted Phone Case', 40.00)">Add to Cart</button>
+            
+        </div>
+        
+
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Welcome to Toony Technology, your number one source for all things unique and creative!. We're dedicated to giving you the very best of services, with a focus on dependability, customer service, and uniqueness.</p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Toony Technology</p>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+</footer>
+
+<script>
+    function addToCart(productName, productPrice) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({ name: productName, price: productPrice });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(productName + ' has been added to your cart.');
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toony Technology - Laptops</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Toony Technology</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="phonecases.html">Phonecases</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div id="cart-preview">
+        <h3>Cart Preview</h3>
+        <div id="cart-preview-items"></div>
+        <p>Total: $<span id="cart-preview-total">0.00</span></p>
+    </div>
+</header>
+
+<main>
+    <section id="laptops">
+        <h2>Laptops</h2>
+        <div class="product-item">
+            <img src="laptopbag.jpg" alt="Laptop Image">
+            <h2>Laptop Model XYZ</h2>
+            <p class="description">Dark toned canvas bag, capable of storing up to 17" laptops</p>
+            <p class="price">$1200.00</p>
+            <button class="add-to-cart" onclick="addToCart('Dark Floral Bag', 40.00)">Add to Cart</button>
+        </div>
+        
+        <div class="product-item">
+            <img src="laptopbag2.jpg" alt="Laptop Image">
+            <h2>Laptop Model XYZ</h2>
+            <p class="description">Green floral canvas bag, capable of storing up to 17" laptops</p>
+            <p class="price">$1200.00</p>
+            <button class="add-to-cart" onclick="addToCart('Green Floral Bag', 40.00)">Add to Cart</button>
+        </div>
+        
+        <div class="product-item">
+            <img src="laptopbag3.jpg" alt="Laptop Image">
+            <h2>Laptop Model XYZ</h2>
+            <p class="description">Sticker-bomb style canvas bag, capable of storing up to 15" laptops</p>
+            <p class="price">$1200.00</p>
+            <button class="add-to-cart" onclick="addToCart('Sticker-bomb Bag', 40.00)">Add to Cart</button>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Toony Technology</p>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="laptops.html">Laptops</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+</footer>
+
+<script>
+    function addToCart(productName, productPrice) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({ name: productName, price: productPrice });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(productName + ' has been added to your cart.');
+        updateCartPreview();
+    }
+
+    function updateCartPreview() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartPreviewItems = document.getElementById('cart-preview-items');
+        let cartPreviewTotal = document.getElementById('cart-preview-total');
+        cartPreviewItems.innerHTML = '';
+        let totalPrice = 0;
+
+        cart.forEach(item => {
+            let p = document.createElement('p');
+            p.innerText = `${item.name} - $${item.price.toFixed(2)}`;
+            cartPreviewItems.appendChild(p);
+            totalPrice += item.price;
+        });
+
+        cartPreviewTotal.innerText = totalPrice.toFixed(2);
+    }
+
+    window.onload = updateCartPreview;
+</script>
+
+</body>
+</html>

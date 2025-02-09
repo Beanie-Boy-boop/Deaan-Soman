@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toony Technology - Phonecases</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Toony Technology</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="laptops.html">Laptops</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div id="cart-preview">
+        <h3>Cart Preview</h3>
+        <div id="cart-preview-items"></div>
+        <p>Total: $<span id="cart-preview-total">0.00</span></p>
+    </div>
+</header>
+
+<main>
+    <section id="Phonecase">
+        <h2>Phonecases</h2>
+        <div class="product-item">
+            <img src="phonecase.jpg" alt="Laptop Image">
+            <h2>Splash-art rubber phonecase</h2>
+            <p class="description">Dark toned phonecase, made with specially hardened rubber alongside a japanese style splash art heat-treated onto the case</p>
+            <p class="price">$1200.00</p>
+            <button class="add-to-cart" onclick="addToCart('Rubber Splash art Phone Case', 20.00)">Add to Cart</button>
+        </div>
+        
+        <div class="product-item">
+            <img src="phonecase2.webp".jpg" alt="Laptop Image">
+            <h2>Hand-painted phonecase</h2>
+            <p class="description">A hand-painted phone case made in collaboration with a local artist. Due to the collaboration being part time, these cases are limited stock</p>
+            <p class="price">$1200.00</p>
+            <button class="add-to-cart" onclick="addToCart('Hand-painted Phone Case', 20.00)">Add to Cart</button>
+        </div>
+        
+        <div class="product-item">
+            <img src="phonecase3.jpg" alt="Laptop Image">
+            <h2>Art-deco style clear phonecase</h2>
+            <p class="description">Art-deco style clear plastic phone case</p>
+            <p class="price">$1200.00</p>
+            <button class="add-to-cart" onclick="addToCart('Art-deco Phone Case', 20.00)">Add to Cart</button>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Toony Technology</p>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="laptops.html">Laptops</a></li>
+            <li><a href="register.html">Register</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+</footer>
+
+</body>
+</html>
